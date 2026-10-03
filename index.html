@@ -1,156 +1,343 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <style>
-    *{
-      justify-items: center;
-      font-family: 'DM Sans',sans-serif;
-    }
-    body {
-      background: #060F1A;
-    }
-    .mobile {
-      width: 300px;
-      height: 550px;
-      background: #060F1A;
-      border: 3px solid #42445A;
-      border-radius: 38px;
-      margin: 50px 0 0 0;
-    }
-    .top {
-      width: 40%;
-      height: 26px;
-      background: #42445A;
-      border-radius: 0 0 20px 20px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .notch {
-      width: 5px;
-      height: 5px;
-      background: #0B1C2D;
-      border: 2px solid #555EBD;
-      border-radius: 50px;
-    }
-    .speaker {
-      width: 50%;
-      height: 5px;
-      background: #0B1C2D;
-      border-radius: 10px;
-    }
-    .main {
-      width: 100%;
-      height: 95%;
-      border-radius: 38px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .shadow {
-      width: 150px;
-      height: 150px;
-      border: 2px solid rgba(0, 146, 250, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 0 10px 0;
-    }
-    .shadow2 {
-      width: 125px;
-      height: 125px;
-      border: 2px solid rgba(0, 146, 250, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .voice {
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle,rgba(0, 116, 250, 0.8), transparent 80%);
-      border: 2px solid rgba(0, 146, 250, 1.0);
-      border-radius: 50%;
-      box-shadow: 0 0 40px  rgba(0, 146, 250, 0.71);
-      align-items: center;
-      justify-content: center;
-      display: flex;
-    }
-    .text {
-      font-size: 30px;
-      font-weight: 600;
-      color: #FFFFFF;
-      margin: 0 0 10px 0; 
-    }
-    .text2 {
-      font-size: 15px;
-      font-weight: 300;
-      color: #50515F;
-      font-family: 'DM Sans',sans-serif;
-      letter-spacing: 4px;
-      margin: 0 0 20px 0;
-    }
-    .loader {
-      width: 60%;
-      height: 5px;
-      background: rgba(0, 146, 250, 0.2);
-      border-radius: 50px;
-      justify-items: start;
-      margin: 0 0 10px 0;
-    }
-    .load {
-      width: 50%;
-      height: 5px;
-      background: rgba(0, 146, 250, 1.0);
-      border-radius: 50px;
-    }
-    .bottom {
-      color: #50515F;
-      font-size: 15px;
-      font-weight: 300px;
-      letter-spacing: 1px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nudge — Creative Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF7E6;
+    --ink:#1D1130;
+    --coral:#FF5A3C;
+    --indigo:#2C1B52;
+    --lime:#D6FF4F;
+    --paper:#FFFFFF;
+    --muted:#6B6280;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.02;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--lime);color:var(--ink);}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--bg);
+    border-bottom:2px solid var(--ink);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;display:flex;align-items:center;gap:8px;}
+  .logo-dot{width:10px;height:10px;background:var(--coral);border-radius:50%;display:inline-block;}
+  .nav-links{display:flex;gap:36px;font-size:15px;font-weight:500;}
+  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--coral);transition:width .25s ease;}
+  .nav-links a:hover:after{width:100%;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:100px;
+    font-weight:600;font-size:14px;
+    border:2px solid var(--ink);
+    cursor:pointer;transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-solid{background:var(--ink);color:var(--bg);}
+  .btn-solid:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--coral);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+  .btn-ghost:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink);}
+
+  /* HERO */
+  .hero{position:relative;padding:96px 0 80px;overflow:hidden;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--indigo);color:var(--lime);
+    font-size:13px;font-weight:600;padding:8px 16px;border-radius:100px;
+    transform:rotate(-3deg);margin-bottom:28px;
+  }
+  .eyebrow:before{content:"";width:7px;height:7px;background:var(--lime);border-radius:50%;}
+  .hero h1{font-size:clamp(42px,7vw,88px);max-width:900px;}
+  .hero h1 em{
+    font-style:normal;color:var(--paper);
+    background:var(--coral);
+    padding:0 14px;border-radius:14px;
+    display:inline-block;transform:rotate(-2deg);
+  }
+  .hero-sub{max-width:480px;margin-top:26px;font-size:18px;color:var(--muted);}
+  .hero-actions{display:flex;gap:16px;margin-top:38px;}
+
+  .hero-cards{position:relative;height:220px;margin-top:70px;}
+  .float-card{
+    position:absolute;width:170px;height:170px;border-radius:20px;
+    border:2px solid var(--ink);display:flex;flex-direction:column;
+    justify-content:space-between;padding:18px;
+    box-shadow:6px 6px 0 var(--ink);
+  }
+  .float-card span{font-size:13px;font-weight:600;}
+  .float-card .tag{font-size:34px;}
+  .fc1{background:var(--lime);left:0;top:10px;transform:rotate(-6deg);}
+  .fc2{background:var(--coral);color:var(--paper);left:200px;top:40px;transform:rotate(4deg);}
+  .fc3{background:var(--indigo);color:var(--paper);left:400px;top:0;transform:rotate(-3deg);}
+  .fc4{background:var(--paper);left:600px;top:30px;transform:rotate(7deg);}
+
+  /* MARQUEE */
+  .marquee{
+    background:var(--indigo);color:var(--paper);
+    padding:18px 0;transform:rotate(-1.4deg);
+    margin:60px 0 -20px;overflow:hidden;white-space:nowrap;
+    border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  }
+  .marquee-track{display:inline-block;animation:scroll 26s linear infinite;font-size:20px;font-weight:600;}
+  .marquee-track span{margin:0 26px;color:var(--lime);}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion: reduce){.marquee-track{animation:none;}}
+
+  section{padding:110px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);}
+  .section-head p{max-width:340px;color:var(--muted);font-size:15px;}
+  .kicker{font-size:13px;font-weight:600;color:var(--coral);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:block;}
+
+  /* SERVICES */
+  .services{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service-card{
+    background:var(--paper);border:2px solid var(--ink);border-radius:20px;
+    padding:28px 22px;transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{transform:translateY(-6px);box-shadow:6px 8px 0 var(--coral);}
+  .service-num{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:700;color:var(--coral);}
+  .service-card h3{font-size:20px;margin:16px 0 10px;}
+  .service-card p{font-size:14px;color:var(--muted);}
+
+  /* WORK */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .work-card{
+    border:2px solid var(--ink);border-radius:20px;overflow:hidden;
+    transition:transform .25s ease;
+  }
+  .work-card:nth-child(2){transform:rotate(1.2deg);}
+  .work-card:nth-child(3){transform:rotate(-1deg);}
+  .work-card:hover{transform:scale(1.03) rotate(0deg);}
+  .work-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:22px;}
+  .w1{background:var(--lime);}
+  .w2{background:var(--coral);color:var(--paper);}
+  .w3{background:var(--indigo);color:var(--paper);}
+  .w4{background:var(--paper);}
+  .w5{background:var(--ink);color:var(--lime);}
+  .w6{background:#FFD9C4;}
+  .work-info{background:var(--paper);padding:18px 20px;}
+  .work-info h4{font-size:16px;font-weight:600;font-family:'Inter';}
+  .work-info span{font-size:13px;color:var(--muted);}
+
+  /* PROCESS */
+  .process{display:flex;gap:0;position:relative;}
+  .process:before{
+    content:"";position:absolute;top:22px;left:0;right:0;height:2px;
+    background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 18px);
+  }
+  .step{flex:1;padding-right:20px;position:relative;}
+  .step-dot{
+    width:44px;height:44px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Bricolage Grotesque';
+    margin-bottom:22px;position:relative;z-index:2;
+  }
+  .step h3{font-size:17px;margin-bottom:8px;}
+  .step p{font-size:14px;color:var(--muted);}
+
+  /* TESTIMONIAL */
+  .testimonial{
+    background:var(--ink);color:var(--bg);border-radius:28px;
+    padding:70px 60px;text-align:center;
+  }
+  .testimonial p{
+    font-family:'Bricolage Grotesque';font-size:clamp(22px,3vw,34px);
+    font-weight:600;max-width:760px;margin:0 auto;line-height:1.3;
+  }
+  .testimonial .who{margin-top:30px;font-size:14px;color:var(--lime);font-weight:600;}
+
+  /* CTA */
+  .cta{
+    background:var(--coral);color:var(--paper);border-radius:28px;
+    padding:80px 40px;text-align:center;border:2px solid var(--ink);
+  }
+  .cta h2{font-size:clamp(32px,5vw,58px);margin-bottom:26px;}
+  .cta .btn-solid{background:var(--paper);color:var(--ink);border-color:var(--ink);}
+  .cta .btn-solid:hover{box-shadow:4px 4px 0 var(--ink);}
+
+  /* FOOTER */
+  footer{border-top:2px solid var(--ink);padding:50px 0 40px;}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:40px;}
+  .footer-cols{display:flex;gap:60px;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:14px;margin-bottom:10px;}
+  .footer-bottom{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .services{grid-template-columns:repeat(2,1fr);}
+    .work-grid{grid-template-columns:1fr;}
+    .process{flex-direction:column;gap:36px;}
+    .process:before{display:none;}
+    .hero-cards{display:none;}
+    .footer-cols{gap:30px;}
+  }
+</style>
 </head>
-
 <body>
-  <div class="mobile">
-    <div class="top">
-      <div class="notch"></div>
-      <div class="speaker"></div>
-    </div>
-    <div class="main">
-      <div class="shadow">
-        <div class="shadow2">
-          <div class="voice">
-            <span style="font-size: 40px;">🎙</span>
-          </div>
-        </div>
-      </div>
-      <div class="text">
-        VoiceGuard
-      </div>
-      <div class="text2">
-        VOICE ASSISTANT 
-      </div>
-      <div class="loader">
-        <div class="load"></div>
-      </div>
-      <div class="bottom">
-        v1.0.0 · Offline · Secure
-      </div>
-      
-    </div>
-    
-  </div>
-</body>
 
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="logo-dot"></span>Nudge</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Studio</a>
+    </div>
+    <a href="#contact" class="btn btn-solid">Start a project</a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <span class="eyebrow">● Currently booking Q1 2027</span>
+  <h1>Brands that get <em>noticed</em>,<br>not just seen.</h1>
+  <p class="hero-sub">Nudge is a small studio that gives ambitious brands a personality worth stopping for — strategy, identity, and campaigns that don't blend in.</p>
+  <div class="hero-actions">
+    <a href="#work" class="btn btn-solid">See our work →</a>
+    <a href="#contact" class="btn btn-ghost">Say hello</a>
+  </div>
+
+  <div class="hero-cards">
+    <div class="float-card fc1"><span>Identity</span><span class="tag">✺</span></div>
+    <div class="float-card fc2"><span>Campaigns</span><span class="tag">◎</span></div>
+    <div class="float-card fc3"><span>Web & product</span><span class="tag">▲</span></div>
+    <div class="float-card fc4"><span>Motion</span><span class="tag">✦</span></div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>BRAND STRATEGY</span>•<span>VISUAL IDENTITY</span>•<span>CAMPAIGNS</span>•<span>WEB DESIGN</span>•<span>MOTION</span>•<span>SOCIAL</span>•
+    <span>BRAND STRATEGY</span>•<span>VISUAL IDENTITY</span>•<span>CAMPAIGNS</span>•<span>WEB DESIGN</span>•<span>MOTION</span>•<span>SOCIAL</span>•
+  </div>
+</div>
+
+<section id="services" class="wrap">
+  <div class="section-head">
+    <div>
+      <span class="kicker">What we do</span>
+      <h2>Four ways we make<br>you unforgettable.</h2>
+    </div>
+    <p>Every project starts the same way — we get obsessed with what makes your brand different, then we build everything around it.</p>
+  </div>
+  <div class="services">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3>Strategy</h3>
+      <p>Positioning and messaging that gives every future decision a spine.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3>Identity</h3>
+      <p>Logos, systems and type that hold up on a billboard and a favicon.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3>Digital</h3>
+      <p>Websites and products people actually enjoy clicking through.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <h3>Campaigns</h3>
+      <p>Launch moments and social work built to get talked about.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="section-head">
+    <div>
+      <span class="kicker">Selected work</span>
+      <h2>Recent nudges.</h2>
+    </div>
+    <p>A few brands we've helped find their edge over the last couple of years.</p>
+  </div>
+  <div class="work-grid">
+    <div class="work-card"><div class="work-thumb w1">Fernweh</div><div class="work-info"><h4>Fernweh Travel</h4><span>Identity · Web</span></div></div>
+    <div class="work-card"><div class="work-thumb w2">Loft&Co</div><div class="work-info"><h4>Loft & Co</h4><span>Campaign</span></div></div>
+    <div class="work-card"><div class="work-thumb w3">Pulse</div><div class="work-info"><h4>Pulse Fitness</h4><span>Strategy · Identity</span></div></div>
+    <div class="work-card"><div class="work-thumb w4">Marrow</div><div class="work-info"><h4>Marrow Foods</h4><span>Packaging</span></div></div>
+    <div class="work-card"><div class="work-thumb w5">Basil</div><div class="work-info"><h4>Basil Bank</h4><span>Digital product</span></div></div>
+    <div class="work-card"><div class="work-thumb w6">Onward</div><div class="work-info"><h4>Onward Studio</h4><span>Motion · Social</span></div></div>
+  </div>
+</section>
+
+<section id="process" class="wrap">
+  <div class="section-head">
+    <div>
+      <span class="kicker">How it works</span>
+      <h2>Four steps, no surprises.</h2>
+    </div>
+  </div>
+  <div class="process">
+    <div class="step"><div class="step-dot">1</div><h3>Discover</h3><p>Workshops to find the real story worth telling.</p></div>
+    <div class="step"><div class="step-dot">2</div><h3>Direction</h3><p>Concepts that push past the obvious option.</p></div>
+    <div class="step"><div class="step-dot">3</div><h3>Build</h3><p>Design, copy and dev, done in the open with you.</p></div>
+    <div class="step"><div class="step-dot">4</div><h3>Launch</h3><p>A moment, not just a file handoff.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="testimonial">
+    <p>"Nudge didn't just redesign our brand — they figured out why nobody remembered us in the first place, then fixed that."</p>
+    <div class="who">— Priya Shah, founder of Basil Bank</div>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="cta">
+    <h2>Let's make something<br>loud together.</h2>
+    <a href="#" class="btn btn-solid">hello@nudge.studio</a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="footer-top">
+    <div class="logo"><span class="logo-dot"></span>Nudge</div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Twitter / X</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Nudge Studio.</span>
+    <span>Karachi · Remote</span>
+  </div>
+</footer>
+
+</body>
 </html>
